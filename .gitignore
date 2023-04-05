@@ -1,0 +1,12 @@
+# created by virtualenv automatically
+.venv/
+
+dist/
+
+pycache/
+
+.vscode/
+
+asciinema/
+
+.idea/
