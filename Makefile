@@ -1,10 +1,8 @@
-#Makefile
-# .PHONY: gendiff
 
 install:
 	poetry install
 
-gen-diff:
+gendiff:
 	poetry run gendiff
 
 build:
@@ -16,5 +14,5 @@ publish:
 package-install:
 	python3 -m pip install --user dist/*.whl
 
-make lint:
+lint:
 	poetry run flake8 gendiff
