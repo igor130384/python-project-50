@@ -2,9 +2,9 @@ name: build-and-tests
 on:
   push:
     branches:
-      - master
+      - '**'
     tags:
-      - '!*' # Do not execute on tags
+      - '**'
     paths:
       - src/*
       - test/*
