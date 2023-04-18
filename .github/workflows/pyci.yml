@@ -1,38 +1,35 @@
-name: pytest
+name: test coverage
 
 on:
   push:
-    branches:
-      - '**'
-    tags:
-      - '**'
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ 3.10 ]
     steps:
       - uses: actions/checkout@v2
-      - name: set up Python 3.10
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10'
-      - name: install poetry
-        run: pip install poetry
+          python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        run: make install
-      - name: run lint
-        run: make lint
-      - name: run test
-        run: make test
-      - name: Create Reporter
         run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-0.11.0-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter 
-          ./cc-test-reporter before-build
-      - name: run test cov
-        run: make test-cov
-      - name: Sending Repo
+          pip install poetry
+          make install
+      - name: Run linter and pytest
+        run: |
+          make lint
+          make test
+      - name: Test code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
-          GITHAB_TOKEN: ${{ secrets.TEST_REPORTER_ID }}
-        run:  |
-         ./cc-test-reporter after-build -r $GITHAB_TOKEN
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: make test-coverage
+          debug: true
