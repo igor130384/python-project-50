@@ -7,7 +7,7 @@ def parse_args():
 
     parser.add_argument("filename1")
     parser.add_argument("filename2")
-    parser.add_argument('-f', '--format',
-                        help='set format of output')
+    parser.add_argument("-f", "--format", help="set format of output",
+                        default='stylish', type=str)
     args = parser.parse_args()
     return args
