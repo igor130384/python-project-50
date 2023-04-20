@@ -21,4 +21,3 @@ def generate_diff(filename1, filename2):
         result = dict(sorted(result.items(), key=lambda x: x[0][2]))
         s = "{\n" + '\n'.join(f'{k}: {v}' for k, v in result.items()) + ' \n}'
     return s
-

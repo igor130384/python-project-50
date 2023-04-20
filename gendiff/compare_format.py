@@ -12,4 +12,3 @@ def definition_form(file_path):
     else:
         raise ValueError('Unsupported format. '
                          'Next formats are supported: .json .yaml .yml')
-
