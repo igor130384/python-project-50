@@ -22,3 +22,14 @@ make retry
 Вывод инструкции help
 
 [![asciicast](https://asciinema.org/a/ZHMorUfnSEUs5tSZXcxkthclc.svg)](https://asciinema.org/a/ZHMorUfnSEUs5tSZXcxkthclc)
+
+ Формат stylish (установлен по умолчанию)
+ [![asciicast](https://asciinema.org/a/u30ONBFQ6nogKe0boYmIe86TN.svg)](https://asciinema.org/a/u30ONBFQ6nogKe0boYmIe86TN)
+
+ Формат plain
+
+ [![asciicast](https://asciinema.org/a/Er55B8Qsbf1CqVzfXn2PeRUBF.svg)](https://asciinema.org/a/Er55B8Qsbf1CqVzfXn2PeRUBF)
+
+ Фотмат json
+
+ [![asciicast](https://asciinema.org/a/IWEqUp59NoaeNo3AzxnN0NNGw.svg)](https://asciinema.org/a/IWEqUp59NoaeNo3AzxnN0NNGw)
