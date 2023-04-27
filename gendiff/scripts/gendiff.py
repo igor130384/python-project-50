@@ -7,7 +7,7 @@ from gendiff.generator import generate_diff
 def main():
     args = parse_args()
     print(
-        generate_diff(args.filename1, args.filename2))
+        generate_diff(args.filename1, args.filename2, args.format))
 
 
 if __name__ == '__main__':
