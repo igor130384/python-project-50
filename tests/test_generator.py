@@ -36,8 +36,6 @@ def test_generate_diff_is_string_plain():
     assert type(result) == str
 
 
-
-
 def test_generate_diff_json_is_string():
     result = generate_diff('tests/fixtures/file1.json', 'tests/fixtures/file2.json', 'json')
     assert type(result) == str
