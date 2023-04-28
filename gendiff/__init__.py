@@ -1,3 +1,4 @@
-from gendiff.choose_format import get_choose
+from gendiff import generator, cli
 
-__all__ = ['get_choose']
+generate_diff = generator.generate_diff
+parse_arguments = cli
