@@ -31,8 +31,8 @@ def gen_base_diff(dict1, dict2):
             diff['nested'][key] = gen_different(dict1[key], dict2[key])
         else:
             diff['changed'][key] = {
-                    'old_value': dict1[key],
-                    'new_value': dict2[key]
+                'old_value': dict1[key],
+                'new_value': dict2[key]
                 }
 
     diff['keys'].sort()
