@@ -34,6 +34,3 @@ def test_generate_diff_plain(file1, file2):
     different = generate_diff(file1, file2, 'plain')
     assert type(different) == str
     assert generate_diff('tests/fixtures/file3.yaml', 'tests/fixtures/file4.yaml', 'plain') == expected_output
-
-
-
