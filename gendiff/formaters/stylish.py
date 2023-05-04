@@ -25,7 +25,7 @@ def stylish(diff, depth=1):
         elif key in diff['changed']:
             item = diff['changed'][key]
             result += gen_tree_changed(item, key, depth)
-        elif key in diff['nested']:
+        else:
             item = diff['nested'][key]
             result += (f'{depth * "    "}{key}: '
                        f'{stylish(item, depth + 1)}\n')
