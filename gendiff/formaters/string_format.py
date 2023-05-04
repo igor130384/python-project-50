@@ -1,4 +1,4 @@
-def stringify_not_dict(data):
+def to_string(data):
     if data is None:
         return 'null'
     elif type(data) == bool:
@@ -7,8 +7,8 @@ def stringify_not_dict(data):
         return data
 
 
-def stringify_dict(dictionary, depth=1):
-    dictionary = stringify_not_dict(dictionary)
+def string_format(dictionary, depth=1):
+    dictionary = to_string(dictionary)
     if type(dictionary) != dict:
         return dictionary
     result = ''
@@ -18,7 +18,7 @@ def stringify_dict(dictionary, depth=1):
         item = dictionary[key]
         if type(item) == dict:
             result += (f'{depth * "    "}{key}: '
-                       f'{stringify_dict(item, depth + 1)}\n')
+                       f'{string_format(item, depth + 1)}\n')
         else:
             if type(item) == bool:
                 item = str(item).lower()

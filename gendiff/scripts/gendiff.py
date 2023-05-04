@@ -5,8 +5,8 @@ import gendiff
 def main():
     args = gendiff.cli.parse_args()
     print(
-        gendiff.generator.generate_diff(args.filename1,
-                                        args.filename2, args.format))
+        gendiff.generate_diff(args.filename1,
+                              args.filename2, args.format))
 
 
 if __name__ == '__main__':

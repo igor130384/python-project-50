@@ -1,13 +1,13 @@
-from gendiff.formaters.string_format import stringify_dict
+from gendiff.formaters.string_format import string_format
 
 
-def get_value_plain(value):
+def to_string(value):
     if type(value) == dict:
         return '[complex value]'
     elif type(value) == str:
         return f"'{value}'"
     else:
-        return stringify_dict(value)
+        return string_format(value)
 
 
 def get_path_plain(previous_path, new_part):
@@ -23,19 +23,18 @@ def gen_text_diff_plain_real(diff, path=''):
         elif key in diff['added'].keys():
             item = diff['added'][key]
             result += (f"Property '{get_path_plain(path, key)}' was added with"
-                       f" value: {get_value_plain(item)}\n")
+                       f" value: {to_string(item)}\n")
+        elif key in diff['nested'].keys():
+            result += gen_text_diff_plain_real(diff['nested'][key],
+                                               path + f'.{key}')
         elif key in diff['changed'].keys():
-            if type(diff['changed'][key]) == dict:
-                result += gen_text_diff_plain_real(diff['changed'][key],
-                                                   path + f'.{key}')
-            else:
-                was = get_value_plain(diff['changed'][key][0])
-                now = get_value_plain(diff['changed'][key][1])
-                result += (f"Property '{get_path_plain(path, key)}' was "
-                           f"updated. From {was} to {now}\n")
+            was = to_string(diff['changed'][key]['old_value'])
+            now = to_string(diff['changed'][key]['new_value'])
+            result += (f"Property '{get_path_plain(path, key)}' was "
+                       f"updated. From {was} to {now}\n")
     return result
 
 
-def gen_text_diff_plain(diff):
+def format(diff):
     plain_diff = gen_text_diff_plain_real(diff)
     return plain_diff[:len(plain_diff) - 1]

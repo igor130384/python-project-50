@@ -10,3 +10,5 @@ pycache/
 asciinema/
 
 .idea/
+
+__pycache__/
