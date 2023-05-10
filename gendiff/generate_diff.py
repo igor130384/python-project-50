@@ -48,3 +48,4 @@ def generate_diff(file_path1, file_path2, format='stylish'):
     return get_format(format)(gen_base_diff(file1, file2))
 
 
+
