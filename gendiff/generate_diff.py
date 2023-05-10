@@ -46,8 +46,3 @@ def generate_diff(file_path1, file_path2, format='stylish'):
     file1 = parse(data1, format1)
     file2 = parse(data2, format2)
     return get_format(format)(gen_base_diff(file1, file2))
-
-
-
-
-
