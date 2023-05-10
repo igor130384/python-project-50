@@ -1,5 +1,6 @@
+from gendiff.data import data_form
 from gendiff.formatter import get_format
-from gendiff.compare_format import definition_form
+from gendiff.parser import parse
 
 
 def gen_different(item1, item2):
@@ -40,7 +41,10 @@ def gen_base_diff(dict1, dict2):
 
 
 def generate_diff(file_path1, file_path2, format='stylish'):
-    decorator = get_format(format)
-    file1 = definition_form(file_path1)
-    file2 = definition_form(file_path2)
-    return decorator(gen_base_diff(file1, file2))
+    data1, format1 = data_form(file_path1)
+    data2, format2 = data_form(file_path2)
+    file1 = parse(data1, format1)
+    file2 = parse(data2, format2)
+    return get_format(format)(gen_base_diff(file1, file2))
+
+

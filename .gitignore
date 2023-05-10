@@ -11,4 +11,11 @@ asciinema/
 
 .idea/
 
-__pycache__/
+gendiff/__pycache__/
+
+tests/__pycache__/
+
+gendiff/formaters/__pycache__/
+
+
+
